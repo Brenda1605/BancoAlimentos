@@ -16,17 +16,29 @@
             android:background="@drawable/orangebackground"
             android:orientation="vertical"
             android:weightSum="17">
-            <LinearLayout
+            <RelativeLayout
                 android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="14">
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#ff0000"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Salir"
+                    android:textColor="@color/black"></Button>
+
                 <ImageView
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_marginTop="100dp"
+                    android:layout_marginLeft="140dp"
                     android:src="@drawable/roundprofile" />
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -65,7 +77,7 @@
             android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="310dp">
+            android:layout_marginTop="300dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -85,7 +97,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_cake"
-                            android:tint="@color/black">
+                            app:tint="@color/black">
                         </ImageView>
                     </LinearLayout>
                     <LinearLayout
@@ -140,7 +152,7 @@
             android:layout_width="360dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="390dp"
             android:backgroundTint="#33E0AD36"
             app:cardCornerRadius="20dp">
             <LinearLayout
