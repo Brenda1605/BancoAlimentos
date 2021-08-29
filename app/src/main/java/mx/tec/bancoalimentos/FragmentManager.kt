@@ -15,7 +15,6 @@ class FragmentManager : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_manager)
         bottom_navigation = findViewById(R.id.bottom_navigation)
-        //bottom_navigation.setO
         bottom_navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_home -> {
