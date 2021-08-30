@@ -24,8 +24,16 @@ class FragmentManager : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Bienvenido al home", Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.action_contributions -> {
-                    Toast.makeText(applicationContext, "Bienvenido a tus contribuciones", Toast.LENGTH_SHORT).show()
+                R.id.action_map -> {
+                    Toast.makeText(applicationContext, "Bienvenido a map", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.action_reports -> {
+                    Toast.makeText(applicationContext, "Bienvenido a reportes", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.action_announcements -> {
+                    Toast.makeText(applicationContext, "Bienvenido a anuncios", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_user -> {

@@ -9,10 +9,22 @@
         android:title="Home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_contributions"
-        android:icon="@drawable/ic_contributions"
+        android:id="@+id/action_map"
+        android:icon="@drawable/ic_map"
         android:enabled="true"
         android:title="My contributions"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_reports"
+        android:icon="@drawable/ic_contributions"
+        android:enabled="true"
+        android:title="User"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_announcements"
+        android:icon="@drawable/ic_announcements"
+        android:enabled="true"
+        android:title="User"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_user"
