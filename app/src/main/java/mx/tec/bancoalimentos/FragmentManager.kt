@@ -27,10 +27,9 @@ class FragmentManager : AppCompatActivity() {
                     true
                 }
                 R.id.action_map -> {
-                    val transaction = SupportMapFragment.newInstance()
-                    supportFragmentManager.beginTransaction()
-                    .add(R.id.flContainer, transaction)
-                    .commit()
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(R.id.flContainer, FragmentMap())
+                    transaction.commit()
                     Toast.makeText(applicationContext, "Bienvenido a map", Toast.LENGTH_SHORT).show()
                     true
                 }

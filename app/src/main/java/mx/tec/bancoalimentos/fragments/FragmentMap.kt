@@ -1,20 +1,24 @@
 package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import mx.tec.bancoalimentos.R
 import com.google.android.gms.maps.model.MarkerOptions
 
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.CameraUpdateFactory
 
-import com.google.android.gms.maps.MapFragment
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,16 +38,6 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
     private var param1: String? = null
     private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,8 +46,21 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
-    override fun onMapReady(p0: GoogleMap) {
-        TODO("Not yet implemented")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState);
+        val mapFragment = getChildFragmentManager().findFragmentById(R.id.map) as SupportMapFragment;
+        mapFragment.getMapAsync(this);
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        val banco = LatLng(20.657140309266143, -103.35566210739388)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(banco, 13f))
+        googleMap.addMarker(
+            MarkerOptions()
+                .title("Banco de Alimentos Guadalajara")
+                .snippet("Trae tus donaciones!")
+                .position(banco)
+        )
     }
 
 
