@@ -11,9 +11,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val logInBtn : Button = findViewById(R.id.main_logInBtn);
+        val createAccountBtn : Button = findViewById(R.id.main_createAccount)
 
         logInBtn.setOnClickListener(){
             val intent = Intent(this, FragmentManager::class.java)
+            startActivity(intent)
+        }
+
+        createAccountBtn.setOnClickListener(){
+            val intent = Intent(this, CreateAccount::class.java)
             startActivity(intent)
         }
     }
