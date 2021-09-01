@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.replace
 import android.widget.Toast
+import com.google.android.gms.maps.SupportMapFragment
 import mx.tec.bancoalimentos.fragments.FragmentHome
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import mx.tec.bancoalimentos.fragments.FragmentMap
 import mx.tec.bancoalimentos.fragments.FragmentProfile
 
 
@@ -25,6 +27,10 @@ class FragmentManager : AppCompatActivity() {
                     true
                 }
                 R.id.action_map -> {
+                    val transaction = SupportMapFragment.newInstance()
+                    supportFragmentManager.beginTransaction()
+                    .add(R.id.flContainer, transaction)
+                    .commit()
                     Toast.makeText(applicationContext, "Bienvenido a map", Toast.LENGTH_SHORT).show()
                     true
                 }

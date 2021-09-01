@@ -6,6 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import mx.tec.bancoalimentos.R
+import com.google.android.gms.maps.model.MarkerOptions
+
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+
+import com.google.android.gms.maps.MapFragment
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,17 +27,21 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentMap.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentMap : Fragment() {
+
+
+class FragmentMap : Fragment(), OnMapReadyCallback {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -37,6 +51,11 @@ class FragmentMap : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
+
+    override fun onMapReady(p0: GoogleMap) {
+        TODO("Not yet implemented")
+    }
+
 
     companion object {
         /**
@@ -57,4 +76,6 @@ class FragmentMap : Fragment() {
                 }
             }
     }
+
+
 }
