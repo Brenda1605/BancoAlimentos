@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253858575373",
+    "project_id": "bancoalimentos-7964f",
+    "storage_bucket": "bancoalimentos-7964f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253858575373:android:a85dbb4cdc81040d121144",
+        "android_client_info": {
+          "package_name": "mx.tec.bancoalimentos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253858575373-651iqfe5oc6ci8ae7oolk923abca3545.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYWxqyzyZqFzPlrewXicZ3aZoTjd0kSgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253858575373-651iqfe5oc6ci8ae7oolk923abca3545.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
