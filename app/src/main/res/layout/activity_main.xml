@@ -10,18 +10,16 @@
         android:id="@+id/main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_titulo"
+        android:layout_marginTop="40dp"
+        android:text="Banco de Aimentos"
         android:textColor="#020202"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="35dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/main_logo"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"
-        />
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/main_logo"
@@ -103,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:backgroundTint="#ec9935"
+        android:backgroundTint="#E3A611"
         android:onClick="login"
         android:text="Iniciar Sesión"
         android:textColor="@color/black"

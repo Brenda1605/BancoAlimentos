@@ -50,4 +50,10 @@ class CreateAccount : AppCompatActivity() {
             Toast.makeText(this, "DATOS FALTANTES!", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun back (view: View?){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
 }
