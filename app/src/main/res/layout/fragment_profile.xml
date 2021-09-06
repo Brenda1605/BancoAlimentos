@@ -29,9 +29,10 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:backgroundTint="#ff0000"
+                    android:backgroundTint="#C8102E"
                     android:text="Salir"
-                    android:textColor="@color/black"></Button>
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></Button>
 
                 <ImageView
                     android:layout_width="130dp"
