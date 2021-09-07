@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".fragments.FragmentReportes"
+    android:layout_weight="1.0"
+    android:layout_alignParentBottom="true">
+
+
+    <TableRow
+        android:layout_width="587dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+
+        <android.widget.ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="341dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/aportaciones" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="390dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="#E5E5E5"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="20dp"/>
+
+            <android.widget.Button
+                android:id="@+id/btnAp1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_template"
+                android:backgroundTint="@color/white"
+                android:paddingLeft="20dp"
+                android:text="05 / 05 / 2021"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+            <android.widget.Button
+                android:id="@+id/btnAp2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_template"
+                android:backgroundTint="@color/white"
+                android:paddingLeft="20dp"
+                android:text="05 / 05 / 2021"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+            <android.widget.Button
+                android:id="@+id/btnAp3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_template"
+                android:backgroundTint="@color/white"
+                android:paddingLeft="20dp"
+                android:text="05 / 05 / 2021"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+            <android.widget.Button
+                android:id="@+id/btnAp4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_template"
+                android:backgroundTint="@color/white"
+                android:paddingLeft="20dp"
+                android:text="05 / 05 / 2021"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+            <android.widget.Button
+                android:id="@+id/btnAp5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_template"
+                android:backgroundTint="@color/white"
+                android:paddingLeft="20dp"
+                android:text="05 / 05 / 2021"
+                android:textAlignment="textStart"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+    </TableRow>
+</TableLayout>

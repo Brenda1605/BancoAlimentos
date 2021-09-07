@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FragmentReporteAlbum">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.FragmentAportaciones"
+        android:layout_weight="1.0"
+        android:layout_alignParentBottom="true">
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Reporte del mes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#FF012B"
+            android:textSize="36dp" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="05 / 02 / 2021"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#979797"
+            android:textSize="23dp" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="50dp"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="401dp"
+                android:layout_height="match_parent">
+
+                <android.widget.ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="165dp"
+                    android:layout_height="112dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/white_box"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/album_pic1"
+                    app:layout_constraintEnd_toStartOf="@+id/img2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.widget.ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="200dp"
+                    android:layout_height="234dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/white_box"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/album_pic2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </TableRow>
+        <TableRow>
+
+
+        </TableRow>
+
+    </TableLayout>
+</FrameLayout>

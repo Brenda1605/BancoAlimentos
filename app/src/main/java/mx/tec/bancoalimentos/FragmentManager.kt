@@ -9,6 +9,7 @@ import mx.tec.bancoalimentos.fragments.FragmentHome
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import mx.tec.bancoalimentos.fragments.FragmentMap
 import mx.tec.bancoalimentos.fragments.FragmentProfile
+import mx.tec.bancoalimentos.fragments.FragmentReportes
 
 
 class FragmentManager : AppCompatActivity() {
@@ -34,6 +35,9 @@ class FragmentManager : AppCompatActivity() {
                     true
                 }
                 R.id.action_reports -> {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(R.id.flContainer, FragmentReportes())
+                    transaction.commit()
                     Toast.makeText(applicationContext, "Bienvenido a reportes", Toast.LENGTH_SHORT).show()
                     true
                 }
