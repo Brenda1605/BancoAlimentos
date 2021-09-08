@@ -1,11 +1,12 @@
 package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ class FragmentHome : Fragment() {
     lateinit var foodAdapter: FoodAdapter
     lateinit var rvFood: RecyclerView
     lateinit var foodManager: RecyclerView.LayoutManager
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,7 @@ class FragmentHome : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -69,6 +72,8 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toolbar = view.findViewById(R.id.tbHome)
+        toolbar.inflateMenu(R.menu.menu_search)
         val dataSet = arrayOf<String>("Frijoles", "Lentejas", "Soya", "Arroz", "Leche", "Harina",
             "Queso", "Agua", "Maiz", "Manzanas", "Guayabas")
         rvFood = view.findViewById(R.id.rvFood)
@@ -78,5 +83,10 @@ class FragmentHome : Fragment() {
         rvFood.layoutManager = foodManager
 
         /*Codigo aquí*/
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_search, menu)
     }
 }
