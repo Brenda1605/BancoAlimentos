@@ -15,30 +15,56 @@
             android:layout_height="wrap_content">
         </androidx.appcompat.widget.Toolbar>
 
-        <View
-            android:id="@+id/goal"
+        <RelativeLayout
+            android:id="@+id/containerGoal"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#FF7F23"
+            android:layout_height="150dp"
             android:layout_below="@+id/tbHome">
-        </View>
-        <ProgressBar
-            android:id="@+id/progressGoal"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="70"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="10dp"
-            android:visibility="visible"
-            android:layout_below="@+id/tbHome"/>
+            <View
+                android:id="@+id/goal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FF7F23">
+            </View>
+            <TextView
+                android:id="@+id/tvTitleGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meta de Septiembre"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 tonelada de arroz"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tvTitleGoal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"/>
+            <ProgressBar
+                android:id="@+id/progressGoal"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="70"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                />
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFood"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/goal"/>
+            android:layout_below="@+id/containerGoal"/>
     </RelativeLayout>
 </FrameLayout>
