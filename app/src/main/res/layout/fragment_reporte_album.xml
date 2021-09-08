@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentReporteAlbum">
 
+    <Button
+        android:id="@+id/report_back"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#c8102e"
+        android:text="REGRESAR"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+
+    </Button>
     <!-- TODO: Update blank fragment layout -->
     <TableLayout
         android:layout_width="match_parent"
@@ -13,9 +26,8 @@
         tools:context=".fragments.FragmentAportaciones"
         android:layout_weight="1.0"
         android:layout_alignParentBottom="true">
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="50dp"/>
+
+
 
         <TextView
             android:id="@+id/txt1"
@@ -23,19 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Reporte del mes"
+            android:layout_marginTop="80dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="#FF012B"
             android:textSize="36dp" />
-
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="05 / 02 / 2021"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#979797"
-            android:textSize="23dp" />
 
         <Space
             android:layout_width="1dp"

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import mx.tec.bancoalimentos.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,10 +18,11 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentReporteAlbum.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentReporteAlbum : Fragment() {
+class FragmentReporteAlbum : Fragment(), View.OnClickListener{
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,12 @@ class FragmentReporteAlbum : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reporte_album, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_reporte_album, container, false)
+
+        val backbtn: Button? = view?.findViewById(R.id.report_back)
+        backbtn?.setOnClickListener(this)
+
+        return view
     }
 
     companion object {
@@ -56,5 +63,11 @@ class FragmentReporteAlbum : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onClick(btn: View?) {
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.flContainer, FragmentReportes())
+        transaction?.commit()
     }
 }
