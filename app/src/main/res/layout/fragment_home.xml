@@ -15,10 +15,30 @@
             android:layout_height="wrap_content">
         </androidx.appcompat.widget.Toolbar>
 
+        <View
+            android:id="@+id/goal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FF7F23"
+            android:layout_below="@+id/tbHome">
+        </View>
+        <ProgressBar
+            android:id="@+id/progressGoal"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="70"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="visible"
+            android:layout_below="@+id/tbHome"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFood"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tbHome"/>
+            android:layout_below="@+id/goal"/>
     </RelativeLayout>
 </FrameLayout>
