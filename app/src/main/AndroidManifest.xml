@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoAlimentos">
         <activity
+            android:name=".RecyclerAdapter"
+            android:exported="true" />
+        <activity
             android:name=".CreateAccount"
             android:exported="true" />
         <activity
             android:name=".FragmentManager"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

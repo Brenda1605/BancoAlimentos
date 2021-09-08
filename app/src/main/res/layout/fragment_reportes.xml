@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".fragments.FragmentReportes"
+    android:layout_weight="1.0"
+    android:layout_alignParentBottom="true">
+
+
+    <TableRow
+        android:layout_width="587dp"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+
+        <android.widget.ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/aportaciones" />
+
+
+    </TableRow>
+
+    <ScrollView>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="430dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="#E5E5E5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione una fecha para visualizar el reporte mensual de las aportaciones realizadas por el Banco de Alimentos a los beneficiarios."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reports_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"/>
+
+
+            </LinearLayout>
+        </TableRow>
+    </ScrollView>
+</TableLayout>

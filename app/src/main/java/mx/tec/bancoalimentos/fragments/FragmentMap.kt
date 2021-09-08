@@ -16,9 +16,7 @@ import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.CameraUpdateFactory
-
-
-
+import com.google.android.gms.maps.model.Marker
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,14 +52,16 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         val banco = LatLng(20.657140309266143, -103.35566210739388)
+        //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(banco, 18.0f));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(banco, 13f))
-        googleMap.addMarker(
+        val place = googleMap.addMarker(
             MarkerOptions()
                 .title("Banco de Alimentos Guadalajara")
                 .snippet("Trae tus donaciones!")
                 .position(banco)
         )
     }
+
 
 
     companion object {
@@ -83,6 +83,5 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
                 }
             }
     }
-
 
 }
