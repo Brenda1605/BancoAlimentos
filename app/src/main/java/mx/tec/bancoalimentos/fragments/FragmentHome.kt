@@ -2,6 +2,7 @@ package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentHome.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentHome : Fragment() {
+class FragmentHome : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -82,11 +83,20 @@ class FragmentHome : Fragment() {
         rvFood.adapter = foodAdapter
         rvFood.layoutManager = foodManager
 
+        val donateBtn: Button? = view?.findViewById(R.id.home_donteBtn)
+        donateBtn?.setOnClickListener(this)
+
         /*Codigo aquí*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_search, menu)
+    }
+
+    override fun onClick(btn: View?) {
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.flContainer, FragmentDonateOptions())
+        transaction?.commit()
     }
 }

@@ -61,10 +61,34 @@
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFood"
+        <RelativeLayout
+            android:id="@+id/container_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/containerGoal" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/containerGoal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFood"
+                android:layout_width="match_parent"
+                android:layout_height="330dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/container_rv">
+
+            <Button
+                android:id="@+id/home_donteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="#F2A900"
+                android:text="DONAR AHORA!"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
     </RelativeLayout>
 </FrameLayout>
