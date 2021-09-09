@@ -17,6 +17,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.Marker
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,7 +53,7 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val banco = LatLng(20.657140309266143, -103.35566210739388)
+        /*val banco = LatLng(20.657140309266143, -103.35566210739388)
         //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(banco, 18.0f));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(banco, 13f))
         val place = googleMap.addMarker(
@@ -59,7 +61,26 @@ class FragmentMap : Fragment(), OnMapReadyCallback {
                 .title("Banco de Alimentos Guadalajara")
                 .snippet("Trae tus donaciones!")
                 .position(banco)
-        )
+        )*/
+
+        Firebase.firestore.collection("places").get().addOnSuccessListener {
+            for(doc in it){
+                val title : String = doc.get("nombre").toString()
+                val latitude : Double = doc.get("latitud").toString().toDouble()
+                val longitud : Double = doc.get("longitud").toString().toDouble()
+                val snippet : String = doc.get("snippet").toString()
+
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .title(title)
+                        .snippet(snippet)
+                        .position(LatLng(latitude, longitud)))
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude,longitud), 13f))
+
+
+                //Log.d("FIREBASE", doc.data.toString())
+            }
+        }
     }
 
 
