@@ -9,10 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.lang.IllegalArgumentException
 
 class CreateAccount : AppCompatActivity() {
+    lateinit var nombre : EditText
+    lateinit var apellido : EditText
+    lateinit var cumpleaños : EditText
     lateinit var correo : EditText
     lateinit var contraseña : EditText
 
@@ -22,9 +27,13 @@ class CreateAccount : AppCompatActivity() {
 
         correo = findViewById(R.id.createAcc_mail)
         contraseña = findViewById(R.id.createAcc_password)
+        nombre = findViewById(R.id.createAcc_name)
+        apellido = findViewById(R.id.createAcc_lastName)
+        cumpleaños = findViewById(R.id.createAcc_brithday)
     }
 
     fun registro(view: View?){
+
         try {
             Firebase.auth.createUserWithEmailAndPassword(
                 correo.text.toString(),
@@ -48,6 +57,23 @@ class CreateAccount : AppCompatActivity() {
                 }
         } catch (e: IllegalArgumentException){
             Toast.makeText(this, "DATOS FALTANTES!", Toast.LENGTH_SHORT).show()
+        }
+
+        val user = hashMapOf(
+            "nombre" to nombre.text.toString(),
+            "apellido" to apellido.text.toString(),
+            "cumpleaños" to cumpleaños.text.toString()
+        )
+        var currUser = Firebase.auth.currentUser
+
+        if (currUser != null) {
+            Firebase.firestore.collection("users").document(currUser.uid)
+                .set(user)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("FIRESTORE", "id:${documentReference}")
+                }.addOnFailureListener { e ->
+                    Log.d("FIRESTORE","Hubo un error: $e")
+                }
         }
     }
 

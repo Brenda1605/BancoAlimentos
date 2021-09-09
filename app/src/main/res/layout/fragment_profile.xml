@@ -52,12 +52,12 @@
                     android:layout_width="0dp"
                     android:layout_weight="5"
                     android:layout_height="match_parent">
+
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/profile_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Sam López"
                         android:textColor="@color/black"
                         android:textSize="34sp"
                         android:textStyle="bold" />
@@ -108,10 +108,10 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/profile_birthday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="12 / 11 / 1985"
                             android:textSize="20sp"></TextView>
                     </LinearLayout>
                 </LinearLayout>
@@ -136,14 +136,13 @@
                         android:layout_width="0dp"
                         android:layout_weight="10"
                         android:layout_height="match_parent">
+
                         <TextView
-                            android:layout_gravity="center"
+                            android:id="@+id/profile_mail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="samLo@mail.com"
-                            android:textSize="20sp"
-                            >
-                        </TextView>
+                            android:layout_gravity="center"
+                            android:textSize="20sp"></TextView>
                     </LinearLayout>
 
                 </LinearLayout>

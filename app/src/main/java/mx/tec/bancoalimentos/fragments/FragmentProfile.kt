@@ -8,8 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import mx.tec.bancoalimentos.FragmentManager
 import mx.tec.bancoalimentos.MainActivity
@@ -30,6 +37,9 @@ class FragmentProfile : Fragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
     private var logoutBtn : Button? = null
+    private var nombre : TextView? = null
+    private var correo : TextView? = null
+    private var cumpleaños : TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +47,8 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -47,8 +59,30 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         val btn: Button? = view?.findViewById(R.id.profile_logoutBtn)
         btn?.setOnClickListener(this)
         // Inflate the layout for this fragment
+
+        nombre = view.findViewById(R.id.profile_name)
+        cumpleaños = view.findViewById(R.id.profile_birthday)
+        correo = view.findViewById(R.id.profile_mail)
+
+        getData()
+
         return view
     }
+
+    fun getData(){
+        var currUser = Firebase.auth.currentUser
+        if (currUser != null) {
+            Firebase.firestore.collection("users").document(currUser.uid)
+                .get().addOnSuccessListener {
+                    nombre?.text = it.getString("nombre") + " " + it.getString("apellido")
+                    correo?.text = currUser.email.toString()
+                    cumpleaños?.text = it.getString("cumpleaños")
+                }
+        }
+
+    }
+
+
 
     companion object {
         /**
