@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.text.TextUtils.replace
 import android.widget.Toast
 import com.google.android.gms.maps.SupportMapFragment
-import mx.tec.bancoalimentos.fragments.FragmentHome
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import mx.tec.bancoalimentos.fragments.FragmentMap
-import mx.tec.bancoalimentos.fragments.FragmentProfile
-import mx.tec.bancoalimentos.fragments.FragmentReportes
+import mx.tec.bancoalimentos.fragments.*
 
 
 class FragmentManager : AppCompatActivity() {
@@ -42,6 +39,9 @@ class FragmentManager : AppCompatActivity() {
                     true
                 }
                 R.id.action_announcements -> {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(R.id.flContainer, FragmentAnuncios())
+                    transaction.commit()
                     Toast.makeText(applicationContext, "Bienvenido a anuncios", Toast.LENGTH_SHORT).show()
                     true
                 }

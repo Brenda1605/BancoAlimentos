@@ -1,15 +1,13 @@
-package mx.tec.bancoalimentos
+package mx.tec.bancoalimentos.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import mx.tec.bancoalimentos.R
 
-class RecyclerAdapter (private var fechas : ArrayList<String>, private var listener : View.OnClickListener): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class ReportsAdapter (private var fechas : ArrayList<String>, private var listener : View.OnClickListener): RecyclerView.Adapter<ReportsAdapter.ViewHolder>() {
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         var texto : TextView = itemView.findViewById(R.id.recycler_text)
     }

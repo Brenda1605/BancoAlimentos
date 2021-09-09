@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import mx.tec.bancoalimentos.Post
 import mx.tec.bancoalimentos.R
+import mx.tec.bancoalimentos.adapters.NewsAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +25,8 @@ class FragmentAnuncios : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var posts:ArrayList<Post>
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +34,36 @@ class FragmentAnuncios : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        posts = ArrayList()
+        posts.add(Post("09/09/2021","1500 despensas donadas en Tlajomulco de Zuñiga",
+        "https://www.uniradioserver.com/media/news_thumbs/202004/20200408123357_179.jpg"))
+        posts.add(Post("07/05/2021","Los invitamos al evento de donación que se llevará a cabo el próximo 16 de mayo.",
+            "https://www.noticieros.live/noticias/wp-content/uploads/2021/03/despensa-beca-suspencion-1280x720.jpg"))
+        posts.add(Post("23/02/2021","El día de hoy cumplimos nuestra meta de donación de 50 toneladas de arroz.",
+            "https://lh3.googleusercontent.com/proxy/uMeTgaxZdW7smA83icvJ9EQm_QYMbaZ-O15feDPhmIKQ6p9nL7sOJ6GFBGang8xg1ZK5jqv6NF4Qwo6kleQ-22ubVjKhjRJIV5l2E4CmWl96OgisRtMn4XlcAg"))
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_anuncios, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_anuncios, container, false)
+        recyclerView = view.findViewById(R.id.news_recyclerView)
+        return view
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val appContext = context?.applicationContext
+        val adapter = NewsAdapter(posts, appContext)
+
+        var linearLayout = LinearLayoutManager(activity)
+        linearLayout.orientation = LinearLayoutManager.VERTICAL
+
+        recyclerView.layoutManager = linearLayout
+        recyclerView.adapter = adapter
     }
 
     companion object {

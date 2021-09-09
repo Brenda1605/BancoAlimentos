@@ -9,23 +9,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tbHome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.appcompat.widget.Toolbar>
+            android:layout_height="wrap_content"></androidx.appcompat.widget.Toolbar>
 
         <RelativeLayout
             android:id="@+id/containerGoal"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_below="@+id/tbHome">
+
             <View
                 android:id="@+id/goal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FF7F23">
-            </View>
+                android:background="#FF7F23"></View>
             <TextView
                 android:id="@+id/tvTitleGoal"
                 android:layout_width="wrap_content"
@@ -46,18 +46,18 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
+
             <ProgressBar
                 android:id="@+id/progressGoal"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="10dp"
                 android:indeterminate="false"
                 android:max="100"
                 android:progress="70"
-                android:layout_marginTop="100dp"
-                android:layout_marginBottom="10dp"
-                android:visibility="visible"
-                />
+                android:visibility="visible" />
 
         </RelativeLayout>
 
@@ -65,6 +65,6 @@
             android:id="@+id/rvFood"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/containerGoal"/>
+            android:layout_below="@+id/containerGoal" />
     </RelativeLayout>
 </FrameLayout>
