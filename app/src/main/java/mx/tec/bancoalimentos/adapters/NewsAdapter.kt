@@ -32,7 +32,7 @@ class NewsAdapter(private var posts: ArrayList<Post>, val context: Context?): Re
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.date.text = posts[position].date
         holder.description.text = posts[position].description
-        Picasso.with(context).load(posts[position].photo).into(holder.photo)
+        Picasso.get().load(posts[position].photo).into(holder.photo)
 
     }
 

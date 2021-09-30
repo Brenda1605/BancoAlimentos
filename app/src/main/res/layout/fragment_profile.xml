@@ -35,11 +35,13 @@
                     android:textStyle="bold"></Button>
 
                 <ImageView
+                    android:id="@+id/profile_userImg"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
-                    android:layout_marginTop="100dp"
                     android:layout_marginLeft="140dp"
+                    android:layout_marginTop="100dp"
                     android:src="@drawable/roundprofile" />
+
             </RelativeLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -66,12 +68,16 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="match_parent">
+
                     <ImageView
+                        android:id="@+id/profile_editBtn"
                         android:layout_width="50sp"
                         android:layout_height="50sp"
+                        android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_edit"
                         app:tint="#E0AD36"
-                        android:layout_marginLeft="10dp"/>
+                        android:clickable="true"
+                        android:focusable="true"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

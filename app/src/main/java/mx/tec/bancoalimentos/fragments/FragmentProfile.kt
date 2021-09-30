@@ -1,23 +1,30 @@
 package mx.tec.bancoalimentos.fragments
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.graphics.drawable.toIcon
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
 import mx.tec.bancoalimentos.FragmentManager
 import mx.tec.bancoalimentos.MainActivity
 import mx.tec.bancoalimentos.R
@@ -37,9 +44,16 @@ class FragmentProfile : Fragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
     private var logoutBtn : Button? = null
+    private var editBtn : ImageView? = null
     private var nombre : TextView? = null
     private var correo : TextView? = null
     private var cumpleaños : TextView? = null
+    private var profileImage : ImageView? = null
+    private var storage = Firebase.storage
+    val getImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri ->
+        uploadImageToFirebase(uri)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +61,6 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
 
     }
 
@@ -60,9 +73,21 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         btn?.setOnClickListener(this)
         // Inflate the layout for this fragment
 
+        val profileRef : StorageReference = storage.reference.child("${"users/"+Firebase.auth.currentUser?.uid+"/profile.jpg"}")
+        profileRef.downloadUrl.addOnSuccessListener { uri : Uri ->
+            Picasso.get().load(uri).into(profileImage)
+        }
+
         nombre = view.findViewById(R.id.profile_name)
         cumpleaños = view.findViewById(R.id.profile_birthday)
         correo = view.findViewById(R.id.profile_mail)
+
+        editBtn = view.findViewById(R.id.profile_editBtn)
+        profileImage = view.findViewById(R.id.profile_userImg)
+
+        profileImage?.setOnClickListener {
+            getImage.launch("image/*")
+        }
 
         getData()
 
@@ -71,6 +96,7 @@ class FragmentProfile : Fragment(), View.OnClickListener {
 
     fun getData(){
         var currUser = Firebase.auth.currentUser
+
         if (currUser != null) {
             Firebase.firestore.collection("users").document(currUser.uid)
                 .get().addOnSuccessListener {
@@ -109,4 +135,20 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         val intent = Intent(activity, MainActivity::class.java)
         activity?.startActivity(intent)
     }
+
+    fun uploadImageToFirebase(imgUri : Uri){
+        val storageRef = storage.reference
+        val fileRef = storageRef.child("${"users/"+Firebase.auth.currentUser?.uid+"/profile.jpg"}")
+        val uploadTask = fileRef.putFile(imgUri)
+
+
+        uploadTask.addOnSuccessListener {
+            fileRef.downloadUrl.addOnSuccessListener { uri : Uri ->
+                Picasso.get().load(uri).into(profileImage)
+            }
+        }.addOnFailureListener{
+            Toast.makeText(getActivity(), "Image ERROR", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }
