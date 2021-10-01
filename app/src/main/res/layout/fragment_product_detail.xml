@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".fragments.FragmentProductDetail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="260sp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_picture_detail"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            tools:src="@drawable/iv_bananas" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16sp"
+            android:layout_marginTop="16sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_name_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Natural Red Apple" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_description_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:textColor="@color/black"
+            tools:text="1kg, Price" />
+
+        <TextView
+            android:id="@+id/tv_price_detail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="16sp"
+            android:layout_marginStart="16sp"
+            android:layout_height="wrap_content"
+            android:gravity="right|center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded"
+            tools:text="Rp.25.000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginHorizontal="16sp"
+            android:layout_marginTop="16sp"
+            android:background="@color/black" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_detail_addtocart"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16sp"
+        android:layout_marginBottom="16sp"
+        android:background="#FF9800"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Añadir"
+        android:textAllCaps="false" />
+
+</LinearLayout>
+

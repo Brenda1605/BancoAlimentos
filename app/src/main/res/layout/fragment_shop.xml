@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/linear_layout_shop"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingHorizontal="24sp">
+
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_cart" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/search"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_marginHorizontal="16sp"
+                android:drawablePadding="8sp"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="16sp"
+                android:text="Buscar producto"
+                app:drawableStartCompat="@drawable/ic_search" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/containerGoal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/search"
+            android:layout_marginTop="15dp">
+
+            <View
+                android:id="@+id/goal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FF7F23"></View>
+            <TextView
+                android:id="@+id/tvTitleGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meta de Septiembre"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 tonelada de arroz"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tvTitleGoal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressGoal"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="10dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="70"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/productsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16sp"
+            android:paddingTop="10dp"
+            android:layout_below="@id/containerGoal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Productos disponibles"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rvProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productsTitle">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/products_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:paddingBottom="?attr/actionBarSize" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvProducts">
+
+            <Button
+                android:id="@+id/home_donteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="#F2A900"
+                android:text="DONAR AHORA!"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -19,37 +19,37 @@ class FragmentManager : AppCompatActivity() {
             when (item.itemId) {
                 R.id.action_home -> {
                     val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.flContainer, FragmentHome())
+                    transaction.replace(R.id.flContainer, FragmentShop())
                     transaction.commit()
-                    Toast.makeText(applicationContext, "Bienvenido al home", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Bienvenido al home", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_map -> {
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.add(R.id.flContainer, FragmentMap())
                     transaction.commit()
-                    Toast.makeText(applicationContext, "Bienvenido a map", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Bienvenido a map", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_reports -> {
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.add(R.id.flContainer, FragmentReportes())
                     transaction.commit()
-                    Toast.makeText(applicationContext, "Bienvenido a reportes", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Bienvenido a reportes", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_announcements -> {
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.add(R.id.flContainer, FragmentAnuncios())
                     transaction.commit()
-                    Toast.makeText(applicationContext, "Bienvenido a anuncios", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Bienvenido a anuncios", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.action_user -> {
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.flContainer, FragmentProfile())
                     transaction.commit()
-                    Toast.makeText(applicationContext, "Bienvenido a perfil", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(applicationContext, "Bienvenido a perfil", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false

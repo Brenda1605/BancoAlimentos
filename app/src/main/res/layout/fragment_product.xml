@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="140sp"
+    android:layout_height="190sp"
+    android:layout_marginVertical="20sp"
+    android:layout_marginStart="16sp"
+    android:background="@drawable/bg_round_white"
+    android:orientation="vertical"
+    app:cardCornerRadius="16sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fafafa">
+
+        <ImageView
+            android:id="@+id/product_photo"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8sp"
+            tools:src="@drawable/iv_bananas" />
+
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12sp"
+            android:layout_marginTop="8sp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Organic Bananas" />
+
+        <TextView
+            android:id="@+id/product_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12sp"
+            android:textColor="@color/black"
+            tools:text="7pcs, Priceg" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:background="#D3D3D3">
+
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Rp.20.000" />
+
+        <ImageView
+            android:id="@+id/btn_add_product"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8sp"
+            android:background="@drawable/bg_btn_add_green"
+            android:padding="4sp"
+            android:src="@drawable/ic_round_add" />
+    </LinearLayout>
+
+</LinearLayout>
