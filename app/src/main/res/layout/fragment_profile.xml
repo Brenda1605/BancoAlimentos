@@ -55,13 +55,19 @@
                     android:layout_weight="5"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/profile_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:textColor="@color/black"
-                        android:textSize="34sp"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/profile_lastName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
@@ -71,10 +77,10 @@
 
                     <ImageView
                         android:id="@+id/profile_editBtn"
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/ic_edit"
+                        android:src="@drawable/ic_save"
                         app:tint="#E0AD36"
                         android:clickable="true"
                         android:focusable="true"/>

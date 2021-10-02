@@ -19,6 +19,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -45,7 +46,8 @@ class FragmentProfile : Fragment(), View.OnClickListener {
     private var param2: String? = null
     private var logoutBtn : Button? = null
     private var editBtn : ImageView? = null
-    private var nombre : TextView? = null
+    private var nombre : EditText? = null
+    private var apellido : EditText? = null
     private var correo : TextView? = null
     private var cumpleaños : TextView? = null
     private var profileImage : ImageView? = null
@@ -79,6 +81,7 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         }
 
         nombre = view.findViewById(R.id.profile_name)
+        apellido = view.findViewById(R.id.profile_lastName)
         cumpleaños = view.findViewById(R.id.profile_birthday)
         correo = view.findViewById(R.id.profile_mail)
 
@@ -87,6 +90,30 @@ class FragmentProfile : Fragment(), View.OnClickListener {
 
         profileImage?.setOnClickListener {
             getImage.launch("image/*")
+        }
+
+        editBtn?.setOnClickListener{
+            if(nombre?.text.toString().isEmpty() || apellido?.text.toString().isEmpty()){
+                Toast.makeText(getActivity(), "Campos vacíos", Toast.LENGTH_SHORT).show()
+            }
+
+            var currUser = Firebase.auth.currentUser
+
+            val user = hashMapOf(
+                "nombre" to nombre?.text.toString(),
+                "apellido" to apellido?.text.toString(),
+                "cumpleaños" to cumpleaños?.text.toString()
+            )
+
+            if (currUser != null) {
+                Firebase.firestore.collection("users").document(currUser.uid)
+                    .set(user)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(getActivity(), "Nombre actualizado", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener { e ->
+                        Log.d("FIRESTORE","Hubo un error: $e")
+                    }
+            }
         }
 
         getData()
@@ -100,7 +127,8 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         if (currUser != null) {
             Firebase.firestore.collection("users").document(currUser.uid)
                 .get().addOnSuccessListener {
-                    nombre?.text = it.getString("nombre") + " " + it.getString("apellido")
+                    nombre?.setText(it.getString("nombre"))
+                    apellido?.setText(it.getString("apellido"))
                     correo?.text = currUser.email.toString()
                     cumpleaños?.text = it.getString("cumpleaños")
                 }
