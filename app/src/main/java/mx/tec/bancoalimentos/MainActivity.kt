@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            val intent = Intent(this, FragmentManager::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val createAccountBtn : Button = findViewById(R.id.main_createAccount)
         val forgotPasswordBtn : Button = findViewById(R.id.main_forgotPassword)

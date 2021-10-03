@@ -19,7 +19,7 @@ class FragmentManager : AppCompatActivity() {
             when (item.itemId) {
                 R.id.action_home -> {
                     val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.flContainer, FragmentShop())
+                    transaction.replace(R.id.flContainer, FragmentHome())
                     transaction.commit()
                     //Toast.makeText(applicationContext, "Bienvenido al home", Toast.LENGTH_SHORT).show()
                     true

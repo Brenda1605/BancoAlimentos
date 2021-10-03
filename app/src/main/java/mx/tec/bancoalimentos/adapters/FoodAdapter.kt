@@ -9,8 +9,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mx.tec.bancoalimentos.R
+import org.json.JSONArray
 
-class FoodAdapter(private val dataSet: Array<String>) :
+class FoodAdapter(private val dataSet: JSONArray) :
     RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
     /**
@@ -42,7 +43,7 @@ class FoodAdapter(private val dataSet: Array<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+        viewHolder.textView.text = dataSet.getJSONObject(position).getJSONObject("fields").getJSONObject("name").getString("stringValue").toString()
         if((position+1)%3==0){
             viewHolder.containerObejct.setBackgroundColor(Color.RED)
         }
@@ -56,6 +57,6 @@ class FoodAdapter(private val dataSet: Array<String>) :
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = dataSet.length()
 
 }

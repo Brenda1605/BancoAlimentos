@@ -174,6 +174,7 @@ class FragmentProfile : Fragment(), View.OnClickListener {
         Firebase.auth.signOut()
         val intent = Intent(activity, MainActivity::class.java)
         activity?.startActivity(intent)
+        activity?.finish()
     }
 
     fun uploadImageToFirebase(imgUri : Uri){
