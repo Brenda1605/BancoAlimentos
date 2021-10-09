@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cvRestaurant"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="12dp"
     android:layout_marginTop="18dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FB2323">
+        android:background="#F1F0F0">
 
         <ImageView
             android:id="@+id/ivItemImage"
@@ -29,20 +29,43 @@
         <RelativeLayout
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="48dp">
-
-            <View
-                android:id="@+id/vItemPalette"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+            android:layout_height="82dp">
 
             <TextView
                 android:id="@+id/tvItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
                 android:textSize="18sp"
+                android:text="Frijol"
                 android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvItemWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="14sp"
+                android:text="1 Kg"
+                android:textColor="@color/black"
+                android:layout_below="@+id/tvItemName"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvItemWeight">
+
+                <TextView
+                    android:id="@+id/tvItemCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:text="$20.00"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
     </LinearLayout>

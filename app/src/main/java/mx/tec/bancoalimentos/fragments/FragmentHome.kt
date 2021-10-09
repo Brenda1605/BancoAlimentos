@@ -80,7 +80,7 @@ class FragmentHome : Fragment(), View.OnClickListener {
         //val dataSet = arrayOf<String>("Frijoles", "Lentejas", "Soya", "Arroz", "Leche", "Harina",
             //"Queso", "Agua", "Maiz", "Manzanas", "Guayabas")
         rvFood = view.findViewById(R.id.rvFood)
-        foodAdapter = FoodAdapter(data)
+        foodAdapter = FoodAdapter(data, onClickListener = this::openActivity)
         foodManager = GridLayoutManager(context,2)
         rvFood.adapter = foodAdapter
         rvFood.layoutManager = foodManager
@@ -95,20 +95,16 @@ class FragmentHome : Fragment(), View.OnClickListener {
 
         jsonRequest = JsonObjectRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
-                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT).show()
                 Log.i("Request", response.getJSONArray("documents").getJSONObject(0).getJSONObject("fields").getJSONObject("name").getString("stringValue").toString())
                 data = response.getJSONArray("documents")
-                //val dataSet = arrayOf<String>("Frijoles", "Lentejas", "Soya", "Arroz", "Leche", "Harina",
-                //"Queso", "Agua", "Maiz", "Manzanas", "Guayabas")
                 rvFood = view.findViewById(R.id.rvFood)
-                foodAdapter = FoodAdapter(data)
+                foodAdapter = FoodAdapter(data, onClickListener = this::openActivity)
                 foodManager = GridLayoutManager(context,2)
                 rvFood.adapter = foodAdapter
                 rvFood.layoutManager = foodManager
                 foodAdapter.notifyDataSetChanged()
             },
             Response.ErrorListener { error ->
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
                 Log.i("Request", error.toString())
             }
         )
@@ -141,5 +137,9 @@ class FragmentHome : Fragment(), View.OnClickListener {
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.flContainer, FragmentDonateOptions())
         transaction?.commit()
+    }
+
+    fun openActivity(view: View, position: Int){
+        Toast.makeText(context, "Escuchando click en la posicion: " + position, Toast.LENGTH_SHORT).show()
     }
 }
