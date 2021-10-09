@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivItemSelected"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/tvNameItemSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:layout_toEndOf="@+id/ivItemSelected"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/tvPriceItemSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$200.00"
+        android:layout_toEndOf="@+id/tvNameItemSelected"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"/>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_delete_or_close"
+        app:tint="#F10F0F"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"/>
+</RelativeLayout>

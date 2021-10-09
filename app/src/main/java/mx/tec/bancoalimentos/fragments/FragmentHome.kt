@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.JsonArray
 import mx.tec.bancoalimentos.R
 import mx.tec.bancoalimentos.adapters.FoodAdapter
+import mx.tec.bancoalimentos.adapters.SelectedAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.ArrayList
@@ -101,7 +102,6 @@ class FragmentHome : Fragment(), View.OnClickListener {
             }
         )
 
-
         jsonRequest.tag = "Ejemplo de request"
         queue.add(jsonRequest)
     }
@@ -115,10 +115,18 @@ class FragmentHome : Fragment(), View.OnClickListener {
         var dialogBuilder: AlertDialog.Builder
         var dialog: AlertDialog
         dialogBuilder = AlertDialog.Builder(requireContext())
-        var confirmationDonateView : View
-        confirmationDonateView = LayoutInflater.from(context).inflate(R.layout.confirmation_donate, null)
+        var confirmationDonateView : View =
+            LayoutInflater.from(context).inflate(R.layout.confirmation_donate, null)
         var btnConfirm : Button = confirmationDonateView.findViewById(R.id.btnConfirm)
         var btnCancel : Button = confirmationDonateView.findViewById(R.id.btnCancel)
+
+        var rvItemsSelected : RecyclerView = confirmationDonateView.findViewById(R.id.rvItemsSelected)
+        var selectedAdapter = SelectedAdapter(selected, onClickListener = this::addObject)
+        var selectedManager = LinearLayoutManager(context)
+        rvItemsSelected.adapter = selectedAdapter
+        rvItemsSelected.layoutManager = selectedManager
+        selectedAdapter.notifyDataSetChanged()
+
         dialogBuilder.setView(confirmationDonateView)
         dialog = dialogBuilder.create()
         dialog.show()
@@ -138,8 +146,8 @@ class FragmentHome : Fragment(), View.OnClickListener {
     }
 
     fun addObject(view: View, position: Int){
-
         selected.add(data.getJSONObject(position))
-        Toast.makeText(context, "Selected: " + data.getJSONObject(position), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Selected: " , Toast.LENGTH_SHORT).show()
+        Log.i("Selected", "Selected: " + selected)
     }
 }
