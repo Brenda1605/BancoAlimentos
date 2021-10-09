@@ -6,6 +6,7 @@ import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -24,9 +25,8 @@ import mx.tec.bancoalimentos.R
 import mx.tec.bancoalimentos.adapters.FoodAdapter
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -38,10 +38,10 @@ class FragmentHome : Fragment(), View.OnClickListener {
     lateinit var rvFood: RecyclerView
     lateinit var foodManager: RecyclerView.LayoutManager
     lateinit var toolbar: Toolbar
-    private lateinit var stringRequest : StringRequest
     private lateinit var jsonRequest: JsonObjectRequest
     private lateinit var queue : RequestQueue
     private lateinit var data : JSONArray
+    private lateinit var selected: MutableList<JSONObject>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,29 +76,21 @@ class FragmentHome : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         toolbar = view.findViewById(R.id.tbHome)
         toolbar.inflateMenu(R.menu.menu_search)
-        data = JSONArray()
-        //val dataSet = arrayOf<String>("Frijoles", "Lentejas", "Soya", "Arroz", "Leche", "Harina",
-            //"Queso", "Agua", "Maiz", "Manzanas", "Guayabas")
-        rvFood = view.findViewById(R.id.rvFood)
-        foodAdapter = FoodAdapter(data, onClickListener = this::openActivity)
-        foodManager = GridLayoutManager(context,2)
-        rvFood.adapter = foodAdapter
-        rvFood.layoutManager = foodManager
 
         val donateBtn: Button? = view?.findViewById(R.id.home_donteBtn)
         donateBtn?.setOnClickListener(this)
 
         queue = Volley.newRequestQueue(context)
-        // aquí hacemos un request
-        val url = "https://firestore.googleapis.com/v1/projects/bancoalimentos-7964f/databases/(default)/documents/products/"
 
+        val url = "https://firestore.googleapis.com/v1/projects/bancoalimentos-7964f/databases/(default)/documents/products/"
 
         jsonRequest = JsonObjectRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
                 Log.i("Request", response.getJSONArray("documents").getJSONObject(0).getJSONObject("fields").getJSONObject("name").getString("stringValue").toString())
                 data = response.getJSONArray("documents")
+                selected = ArrayList()
                 rvFood = view.findViewById(R.id.rvFood)
-                foodAdapter = FoodAdapter(data, onClickListener = this::openActivity)
+                foodAdapter = FoodAdapter(data, onClickListener = this::addObject)
                 foodManager = GridLayoutManager(context,2)
                 rvFood.adapter = foodAdapter
                 rvFood.layoutManager = foodManager
@@ -108,24 +100,10 @@ class FragmentHome : Fragment(), View.OnClickListener {
                 Log.i("Request", error.toString())
             }
         )
-        /*stringRequest = JRequest(
-            Request.Method.GET,
-            url,
-            Response.Listener<JsonArray> {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                Log.i("Request", it.toString())
-            },
-            Response.ErrorListener {
-                Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
-                Log.i("Request", it.toString())
-            }
-        )*/
+
 
         jsonRequest.tag = "Ejemplo de request"
         queue.add(jsonRequest)
-
-
-        /*Codigo aquí*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -134,12 +112,34 @@ class FragmentHome : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(btn: View?) {
+        var dialogBuilder: AlertDialog.Builder
+        var dialog: AlertDialog
+        dialogBuilder = AlertDialog.Builder(requireContext())
+        var confirmationDonateView : View
+        confirmationDonateView = LayoutInflater.from(context).inflate(R.layout.confirmation_donate, null)
+        var btnConfirm : Button = confirmationDonateView.findViewById(R.id.btnConfirm)
+        var btnCancel : Button = confirmationDonateView.findViewById(R.id.btnCancel)
+        dialogBuilder.setView(confirmationDonateView)
+        dialog = dialogBuilder.create()
+        dialog.show()
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        btnConfirm.setOnClickListener{
+            paymentOptions()
+            dialog.dismiss()
+        }
+
+    }
+    fun paymentOptions(){
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.flContainer, FragmentDonateOptions())
         transaction?.commit()
     }
 
-    fun openActivity(view: View, position: Int){
-        Toast.makeText(context, "Escuchando click en la posicion: " + position, Toast.LENGTH_SHORT).show()
+    fun addObject(view: View, position: Int){
+
+        selected.add(data.getJSONObject(position))
+        Toast.makeText(context, "Selected: " + data.getJSONObject(position), Toast.LENGTH_SHORT).show()
     }
 }
