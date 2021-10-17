@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import mx.tec.bancoalimentos.R
-
+/*
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -64,10 +64,10 @@ class FragmentReporteAlbum : Fragment(), View.OnClickListener{
                 }
             }
     }
-
+/*
     override fun onClick(btn: View?) {
         val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.flContainer, FragmentReportes())
+        transaction?.replace(R.id.flContainer, FragmentReports())
         transaction?.commit()
     }
-}
+}*/

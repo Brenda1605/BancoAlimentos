@@ -1,22 +1,13 @@
-package mx.tec.bancoalimentos.adapters
+package mx.tec.bancoalimentos
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import mx.tec.bancoalimentos.Post
-import mx.tec.bancoalimentos.R
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.news_layout_row.view.*
-import mx.tec.bancoalimentos.News
 import mx.tec.bancoalimentos.fragments.FragmentAnuncios
-
 
 class NewsAdapter(private val context: FragmentAnuncios): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>(){
 
@@ -34,7 +25,7 @@ class NewsAdapter(private val context: FragmentAnuncios): RecyclerView.Adapter<N
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         //Obtener objeto entero de cada reporte de la lista
-        val news: News = newsList[position]
+        val news:News = newsList[position]
         holder.bindView(news)
     }
 

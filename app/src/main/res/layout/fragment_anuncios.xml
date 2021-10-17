@@ -31,11 +31,11 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/news_recyclerView"
+            android:id="@+id/recyclerViewNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="?attr/actionBarSize"
-            android:layout_below="@id/news_title" />
+            android:layout_below="@id/news_title"
+            android:paddingBottom="?attr/actionBarSize" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -1,18 +1,16 @@
 package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_anuncios.*
 import kotlinx.android.synthetic.main.fragment_reportes_mes.*
-import mx.tec.bancoalimentos.*
-import mx.tec.bancoalimentos.adapters.NewsAdapter
+import mx.tec.bancoalimentos.R
+import mx.tec.bancoalimentos.ReportViewModel
+import mx.tec.bancoalimentos.ReportsAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,18 +19,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentAnuncios.newInstance] factory method to
+ * Use the [FragmentReportesMes.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentAnuncios : Fragment() {
+class FragmentReportesMes : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var adapter : NewsAdapter
+    private lateinit var adapter : ReportsAdapter
 
     //Inicializar viewModel #by lazy(Inicializarlo cuando lo necesito)
-    private val viewModel by lazy{ ViewModelProvider(this).get(NewsViewModel::class.java)}
+    private val viewModel by lazy{ ViewModelProvider(this).get(ReportViewModel::class.java)}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +38,7 @@ class FragmentAnuncios : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater!!.inflate(R.layout.fragment_anuncios, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_reportes_mes, container, false)
         return view
     }
 
@@ -52,21 +50,23 @@ class FragmentAnuncios : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        adapter = NewsAdapter(this)
-        recyclerViewNews.layoutManager = LinearLayoutManager(requireContext())
+        adapter = ReportsAdapter(this)
+        //Scroll recyclerView
+        //Log.d("abis", "onCreate:  ${recyclerViewReports.layoutManager.toString()} ")
+        //recyclerViewReports.layoutManager = LinearLayoutManager(requireContext())
 
-        if (recyclerViewNews != null){
-            recyclerViewNews.adapter = adapter
+        if (recyclerViewReports != null){
+            recyclerViewReports.adapter = adapter
+
         }
         //Adapter(Context)
         //¿De dónde estamos mandando la información?
 
         observeData()
     }
-
     private fun observeData(){
-        viewModel.fetchNewsData().observe(viewLifecycleOwner, Observer {
-            adapter.setListNews(it)
+        viewModel.fetchReportData().observe(viewLifecycleOwner, Observer {
+            adapter.setListData(it)
             adapter.notifyDataSetChanged()
         })
     }
@@ -78,12 +78,12 @@ class FragmentAnuncios : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentAnuncios.
+         * @return A new instance of fragment FragmentReportesMes.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentAnuncios().apply {
+            FragmentReportesMes().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

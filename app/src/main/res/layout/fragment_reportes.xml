@@ -46,23 +46,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Seleccione una fecha para visualizar el reporte mensual de las aportaciones realizadas por el Banco de Alimentos a los beneficiarios."
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:textSize="16sp">
 
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/reports_recyclerView"
+                    android:id="@+id/reportsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_height="375dp"
+                    android:layout_marginTop="10dp" />
 
 
             </LinearLayout>
         </TableRow>
     </ScrollView>
+
 </TableLayout>

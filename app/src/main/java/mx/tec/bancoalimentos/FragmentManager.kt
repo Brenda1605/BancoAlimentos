@@ -33,7 +33,7 @@ class FragmentManager : AppCompatActivity() {
                 }
                 R.id.action_reports -> {
                     val transaction = supportFragmentManager.beginTransaction()
-                    transaction.add(R.id.flContainer, FragmentReportes())
+                    transaction.add(R.id.flContainer, FragmentReportesMes())
                     transaction.commit()
                     //Toast.makeText(applicationContext, "Bienvenido a reportes", Toast.LENGTH_SHORT).show()
                     true

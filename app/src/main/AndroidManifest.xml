@@ -13,6 +13,9 @@
             android:name=".ForgotPasword"
             android:exported="false" />
         <activity
+            android:name=".ActivityReports"
+            android:exported="true" />
+        <activity
             android:name=".adapters.NewsAdapter"
             android:exported="true" />
         <activity
