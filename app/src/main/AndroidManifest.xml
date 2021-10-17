@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoAlimentos">
         <activity
+            android:name=".ForgotPasword"
+            android:exported="false" />
+        <activity
             android:name=".adapters.NewsAdapter"
             android:exported="true" />
         <activity

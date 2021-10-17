@@ -1,169 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#F8E6BA"
+    android:padding="20dp" >
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#E6E2E2"
-        tools:context=".CreateAccount">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Crear una cuenta"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Bienvenid@ a"
-            android:textColor="#0E0E0E"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.079"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="BANCO DE ALIMENTOS GUADALAJARA"
-            android:textColor="#0B0909"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Ingrese sus datos para crear una cuenta"
-            android:textColor="#070707"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <EditText
+        android:id="@+id/createAcc_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
 
-        <EditText
-            android:id="@+id/createAcc_name"
-            android:layout_width="296dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="32dp"
-            android:background="#F8F5F5"
-            android:backgroundTint="#FFFCFC"
-            android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+    <EditText
+        android:id="@+id/createAcc_lastName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Apellido"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/createAcc_lastName"
-            android:layout_width="296dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFCFC"
-            android:backgroundTint="#FFFCFC"
-            android:ems="10"
-            android:hint="Apellido"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_name" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
 
-        <Button
-            android:id="@+id/crateAcc_registerBtn"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="100dp"
-            android:backgroundTint="#E3A611"
-            android:onClick="registro"
-            android:text="Crear cuenta"
-            android:textColor="#0B0A0A"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_password"
-            app:layout_constraintVertical_bias="0.0" />
+    <EditText
+        android:id="@+id/createAcc_brithday"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Fecha de nacimiento (dd/mm/aaaa)"
+        android:inputType="date"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/crateAcc_back"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="100dp"
-            android:backgroundTint="#C8102E"
-            android:onClick="back"
-            android:text="Regresar"
-            android:textColor="#0B0A0A"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/crateAcc_registerBtn"
-            app:layout_constraintHorizontal_bias="0.529"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_password"
-            app:layout_constraintVertical_bias="0.0" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
 
-        <EditText
-            android:id="@+id/createAcc_mail"
-            android:layout_width="296dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFCFC"
-            android:ems="10"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_brithday" />
+    <EditText
+        android:id="@+id/createAcc_mail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Correo"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/createAcc_password"
-            android:layout_width="296dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFCFC"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_mail" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
 
-        <EditText
-            android:id="@+id/createAcc_brithday"
-            android:layout_width="296dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="12dp"
-            android:background="#FFFCFC"
-            android:backgroundTint="#FBFAFA"
-            android:ems="10"
-            android:hint="Fecha de nacimiento (dd/mm/aa)"
-            android:inputType="date"
-            android:paddingLeft="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAcc_lastName" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <EditText
+        android:id="@+id/createAcc_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/padlock"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/key"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:hint="Repetir contraseña"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="@color/white" />
+
+
+    <Button
+        android:id="@+id/crateAcc_registerBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
+        android:onClick="registro"
+        android:padding="3dp"
+        android:text="Crear cuenta"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/crateAcc_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#00000000"
+        android:onClick="back"
+        android:text="¿Ya tiene una cuenta? Acceder."
+        android:textAllCaps="false"
+        android:textColor="#0808B1"
+        android:textStyle="bold" />
+
+</LinearLayout>

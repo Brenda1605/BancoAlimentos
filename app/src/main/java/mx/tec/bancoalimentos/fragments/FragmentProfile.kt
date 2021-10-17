@@ -128,6 +128,7 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             Firebase.firestore.collection("users").document(currUser.uid)
                 .get().addOnSuccessListener {
                     nombre?.setText(it.getString("nombre"))
+                    Log.wtf("FIREBASE", it.getString("nombre"))
                     apellido?.setText(it.getString("apellido"))
                     correo?.text = currUser.email.toString()
                     cumpleaños?.text = it.getString("cumpleaños")
