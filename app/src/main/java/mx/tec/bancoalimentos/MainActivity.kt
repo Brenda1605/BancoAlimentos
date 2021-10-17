@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 class MainActivity : AppCompatActivity() {
     lateinit var correo : EditText
     lateinit var contraseña : EditText
-    lateinit var mAuthListener: AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +38,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = Firebase.auth.currentUser
     }
 
     fun login(view: View?){

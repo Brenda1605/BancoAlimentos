@@ -53,7 +53,6 @@ class FragmentProfile : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var logoutBtn : Button? = null
     private var editBtn : ImageView? = null
     private var nombre : EditText? = null
     private var apellido : EditText? = null
@@ -72,9 +71,6 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
-
     }
 
     override fun onCreateView(
@@ -137,24 +133,19 @@ class FragmentProfile : Fragment(), View.OnClickListener {
 
         Firebase.auth.addAuthStateListener() {
             var currUser = it.currentUser
-            Log.wtf("HOLA", currUser?.uid.toString())
-
 
             if (currUser != null) {
                 Firebase.firestore.collection("users").document(currUser.uid)
                     .get().addOnSuccessListener {
                         nombre?.setText(it.getString("nombre"))
-                        Log.wtf("FIREBASE", it.getString("nombre"))
                         apellido?.setText(it.getString("apellido"))
                         correo?.text = currUser.email.toString()
                         cumpleaños?.text = it.getString("cumpleaños")
                     }.addOnFailureListener {
-                        Log.wtf("FIREBASE", currUser.toString())
                         Log.wtf("FIREBASE", "ERROR")
                     }
             }
         }
-
     }
 
 
