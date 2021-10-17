@@ -1,7 +1,6 @@
 package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +42,7 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
 
         val cardOp1: CardView = view?.findViewById(R.id.donate_op1Card)
         val cardOp2: CardView = view?.findViewById(R.id.donate_op2Card)
-        val backBtn: Button = view?.findViewById(R.id.donate_backBtn)
+        val backBtn: Button = view?.findViewById(R.id.forgotpass_sendBtn)
         cardOp1?.setOnClickListener(this)
         cardOp2?.setOnClickListener(this)
         backBtn?.setOnClickListener(this)
@@ -80,7 +79,7 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
         when (card.id){
             R.id.donate_op1Card -> fragment = FragmentMap()
             R.id.donate_op2Card -> fragment = FragmentPaymentMethod()
-            R.id.donate_backBtn -> fragment = FragmentHome()
+            R.id.forgotpass_sendBtn -> fragment = FragmentHome()
         }
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.flContainer,fragment)

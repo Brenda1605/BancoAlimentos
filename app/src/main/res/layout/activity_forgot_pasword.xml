@@ -1,63 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAD297"
+    android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">"
-    tools:context=".ForgotPasword">
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="ozenero.com"
-        android:textSize="24sp" />
+    <ImageButton
+        android:id="@+id/forgotpass_backbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/arrow"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="Forgot your password?"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="To reset password, enter your email, press the button and check mail to follow instruction."
-        android:textSize="14dp" />
-
-    <EditText
-        android:id="@+id/edt_reset_email"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:hint="Your email here"
-        android:inputType="textEmailAddress" />
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/btn_reset_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Reset Password" />
+        <RelativeLayout
+            android:id="@+id/forgotpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@null"
-        android:text="BACK"
-        android:textColor="@android:color/holo_blue_dark" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/donate_op1Card"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="20dp">
 
-</LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Restablecer contraseña"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:text="Ingrese su correo electrónico"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/forgotpass_mail"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/email"
+                        android:drawablePadding="15dp"
+                        android:gravity="center_vertical"
+                        android:hint="Correo"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/forgotpass_sendBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="#c8102e"
+                        android:text="Enviar"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/forgotpass"
+            android:layout_marginTop="20dp">
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>
