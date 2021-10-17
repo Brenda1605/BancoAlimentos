@@ -47,6 +47,24 @@ class CreateAccount : AppCompatActivity() {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
 
+                        var currUser = Firebase.auth.currentUser
+
+                        val user = hashMapOf(
+                            "nombre" to nombre.text.toString(),
+                            "apellido" to apellido.text.toString(),
+                            "cumpleaños" to cumpleaños.text.toString()
+                        )
+
+                        if (currUser != null) {
+                            Firebase.firestore.collection("users").document(currUser.uid)
+                                .set(user)
+                                .addOnSuccessListener { documentReference ->
+                                    Log.d("FIRESTORE", "id:${documentReference}")
+                                }.addOnFailureListener { e ->
+                                    Log.d("FIRESTORE","Hubo un error: $e")
+                                }
+                        }
+
                     } else {
                         Log.w(
                             "FIREBASE",
@@ -59,22 +77,6 @@ class CreateAccount : AppCompatActivity() {
             Toast.makeText(this, "DATOS FALTANTES!", Toast.LENGTH_SHORT).show()
         }
 
-        val user = hashMapOf(
-            "nombre" to nombre.text.toString(),
-            "apellido" to apellido.text.toString(),
-            "cumpleaños" to cumpleaños.text.toString()
-        )
-        var currUser = Firebase.auth.currentUser
-
-        if (currUser != null) {
-            Firebase.firestore.collection("users").document(currUser.uid)
-                .set(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d("FIRESTORE", "id:${documentReference}")
-                }.addOnFailureListener { e ->
-                    Log.d("FIRESTORE","Hubo un error: $e")
-                }
-        }
     }
 
     fun back (view: View?){

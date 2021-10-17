@@ -29,6 +29,15 @@ import com.squareup.picasso.Picasso
 import mx.tec.bancoalimentos.FragmentManager
 import mx.tec.bancoalimentos.MainActivity
 import mx.tec.bancoalimentos.R
+import android.widget.Toast
+
+import android.app.ListActivity
+
+import com.google.firebase.auth.FirebaseUser
+
+import androidx.annotation.NonNull
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +73,8 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             param2 = it.getString(ARG_PARAM2)
         }
 
+
+
     }
 
     override fun onCreateView(
@@ -92,6 +103,8 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             getImage.launch("image/*")
         }
 
+        getData()
+
         editBtn?.setOnClickListener{
             if(nombre?.text.toString().isEmpty() || apellido?.text.toString().isEmpty()){
                 Toast.makeText(getActivity(), "Campos vacíos", Toast.LENGTH_SHORT).show()
@@ -116,23 +129,30 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             }
         }
 
-        getData()
 
         return view
     }
 
     fun getData(){
-        var currUser = Firebase.auth.currentUser
 
-        if (currUser != null) {
-            Firebase.firestore.collection("users").document(currUser.uid)
-                .get().addOnSuccessListener {
-                    nombre?.setText(it.getString("nombre"))
-                    Log.wtf("FIREBASE", it.getString("nombre"))
-                    apellido?.setText(it.getString("apellido"))
-                    correo?.text = currUser.email.toString()
-                    cumpleaños?.text = it.getString("cumpleaños")
-                }
+        Firebase.auth.addAuthStateListener() {
+            var currUser = it.currentUser
+            Log.wtf("HOLA", currUser?.uid.toString())
+
+
+            if (currUser != null) {
+                Firebase.firestore.collection("users").document(currUser.uid)
+                    .get().addOnSuccessListener {
+                        nombre?.setText(it.getString("nombre"))
+                        Log.wtf("FIREBASE", it.getString("nombre"))
+                        apellido?.setText(it.getString("apellido"))
+                        correo?.text = currUser.email.toString()
+                        cumpleaños?.text = it.getString("cumpleaños")
+                    }.addOnFailureListener {
+                        Log.wtf("FIREBASE", currUser.toString())
+                        Log.wtf("FIREBASE", "ERROR")
+                    }
+            }
         }
 
     }

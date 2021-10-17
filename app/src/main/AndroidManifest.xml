@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoAlimentos">
         <activity
-            android:name=".ForgotPasword"
+            android:name=".ForgotPassword"
             android:exported="false" />
         <activity
             android:name=".ActivityReports"

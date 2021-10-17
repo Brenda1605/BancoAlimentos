@@ -10,15 +10,21 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var correo : EditText
     lateinit var contraseña : EditText
+    lateinit var mAuthListener: AuthStateListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val createAccountBtn : Button = findViewById(R.id.main_createAccount)
+        val forgotPasswordBtn : Button = findViewById(R.id.main_forgotPassword)
         correo = findViewById(R.id.main_mail)
         contraseña = findViewById(R.id.main_password)
 
@@ -26,6 +32,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateAccount::class.java)
             startActivity(intent)
         }
+
+        forgotPasswordBtn.setOnClickListener(){
+            val intent = Intent(this, ForgotPassword::class.java)
+            startActivity(intent)
+        }
+
+
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = Firebase.auth.currentUser
     }
 
     fun login(view: View?){
