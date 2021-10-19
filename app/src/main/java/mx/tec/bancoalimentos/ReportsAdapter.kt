@@ -1,5 +1,6 @@
 package mx.tec.bancoalimentos
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,39 +8,43 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.report_layout_row.view.*
 import mx.tec.bancoalimentos.fragments.FragmentReportesMes
 
-class ReportsAdapter(private val context: FragmentReportesMes): RecyclerView.Adapter<ReportsAdapter.ReportViewHolder>(){
+class ReportsAdapter(private val context: Context,
+                     private val itemClickListener: OnReportClickListener): RecyclerView.Adapter<ReportsAdapter.ReportsViewHolder>(){
 
-    //Crear lista
-    //Set data
+    interface OnReportClickListener{
+        fun onItemClick(date: String, img1: String, img2: String, img3: String)
+    }
+
     private var dataList = mutableListOf<Report>()
-    fun setListData(data : MutableList<Report>){
+
+    fun setListData(data:MutableList<Report>){
         dataList = data
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.report_layout_row, parent, false)//////
-        return ReportViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportsViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.report_layout_row, parent, false)
+        return ReportsViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
-        //Obtener objeto entero de cada reporte de la lista
+    override fun onBindViewHolder(holder: ReportsViewHolder, position: Int) {
         val report:Report = dataList[position]
         holder.bindView(report)
     }
 
     override fun getItemCount(): Int {
-        return if(dataList.size > 0) {
-            dataList.size
+        if (dataList.size > 0){
+            return dataList.size
         }else{
-            0
+            return 0
         }
     }
 
-    inner class ReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //Inflar vistas (Ponerle los datos) los datos vienen de onBindViewHolder
-        //
-        fun bindView(report : Report){
+    inner class ReportsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+
+        fun bindView(report:Report){
+            itemView.setOnClickListener{itemClickListener.onItemClick(report.date, report.img1, report.img2, report.img3)}
             itemView.Date.text = report.date
+
         }
     }
 }

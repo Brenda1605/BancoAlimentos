@@ -1,5 +1,6 @@
 package mx.tec.bancoalimentos.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentReportesMes.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentReportesMes : Fragment() {
+class FragmentReportesMes : Fragment(), ReportsAdapter.OnReportClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -50,7 +51,7 @@ class FragmentReportesMes : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        adapter = ReportsAdapter(this)
+        adapter = ReportsAdapter(requireContext(), this)
         //Scroll recyclerView
         //Log.d("abis", "onCreate:  ${recyclerViewReports.layoutManager.toString()} ")
         //recyclerViewReports.layoutManager = LinearLayoutManager(requireContext())
@@ -69,6 +70,17 @@ class FragmentReportesMes : Fragment() {
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
         })
+    }
+
+    override fun onItemClick(date: String, img1: String, img2: String, img3: String) {
+        val intent = Intent(requireContext(), ActivityAlbum::class.java)
+        intent.putExtra("img1", img1)
+        intent.putExtra("img2", img2)
+        intent.putExtra("img3", img3)
+        intent.putExtra("date", date)
+
+        requireActivity().startActivity(intent)
+        //Toast.makeText(this, "aaa $date", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

@@ -13,7 +13,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".ActivityReports"
+            android:name=".fragments.ActivityAlbum"
             android:exported="true" />
         <activity
             android:name=".adapters.NewsAdapter"

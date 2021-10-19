@@ -16,7 +16,11 @@ class Repo {
             val listData: MutableList<Report> = mutableListOf<Report>()
             for (document in result){
                 var date = document.getString("date")
-                var report = Report(date!!)
+                var img1 = document.getString("img1")
+                var img2 = document.getString("img2")
+                var img3 = document.getString("img3")
+                var report = Report(date!!, img1!!, img2!!, img3!!)
+
                 listData.add(report)
             }
             mutableData.value = listData
