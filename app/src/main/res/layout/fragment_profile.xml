@@ -12,86 +12,75 @@
         android:layout_height="600dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="300dp"
             android:background="@drawable/orangebackground"
-            android:orientation="vertical"
-            android:weightSum="17">
+            android:orientation="vertical">
             <RelativeLayout
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="14">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/profile_logoutBtn"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
                     android:backgroundTint="#C8102E"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
                     android:text="Salir"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></Button>
+                    android:textStyle="bold"/>
 
                 <ImageView
                     android:id="@+id/profile_userImg"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
-                    android:layout_marginLeft="140dp"
                     android:layout_marginTop="100dp"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/roundprofile" />
-
             </RelativeLayout>
-            <LinearLayout
-                android:orientation="horizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_weight="3"
-                android:layout_height="0dp"
-                android:weightSum="7">
-                <LinearLayout
-                    android:gravity="right"
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
-                    android:layout_height="match_parent">
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
                     <EditText
                         android:id="@+id/profile_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:text="Brenda"
                         android:textColor="@color/black"
                         android:textSize="26sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
                     <EditText
                         android:id="@+id/profile_lastName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:text="Castillo"
                         android:textColor="@color/black"
                         android:textSize="26sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="match_parent">
-
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@+id/profile_name"
+                        android:layout_marginLeft="20dp"/>
                     <ImageView
                         android:id="@+id/profile_editBtn"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/ic_save"
                         app:tint="#E0AD36"
                         android:clickable="true"
-                        android:focusable="true"/>
-                </LinearLayout>
-            </LinearLayout>
+                        android:focusable="true"
+                        android:layout_gravity="end"
+                        android:layout_centerVertical="true"/>
+            </RelativeLayout>
         </LinearLayout>
         <androidx.cardview.widget.CardView
             android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="300dp">
+            android:layout_marginTop="340dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -162,106 +151,90 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="360dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="450dp"
             android:backgroundTint="#33E0AD36"
-            app:cardCornerRadius="20dp">
+            card_view:cardCornerRadius="8dp"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="# de donaciones"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="33"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="right">
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Donaste hace"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="10 días"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="5">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:weightSum="2">
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="# de donaciones"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ranking entre donadores:"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="33"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Donaste hace"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="10 días"
-                            android:textSize="25sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:weightSum="4">
-                    <LinearLayout
-                        android:gravity="right|center_vertical"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ranking entre donadores:"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center_vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="#23"
-                            android:textSize="25sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
-                    </LinearLayout>
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="#23"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </RelativeLayout>
-
-    <!--   TODO: Update blank fragment layout -->
-
-
 </LinearLayout>
