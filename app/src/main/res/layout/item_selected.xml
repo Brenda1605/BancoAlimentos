@@ -3,33 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="100dp">
 
-    <ImageView
-        android:id="@+id/ivItemSelected"
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cvItemSelected"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="10dp"
         android:layout_width="100dp"
-        android:layout_height="100dp"/>
+        android:layout_height="80dp"
+        android:clickable="true"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="8dp"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:id="@+id/containerObejct"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F1F0F0">
+
+            <ImageView
+                android:id="@+id/ivItemSelected"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvNameItemSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"
-        android:layout_toEndOf="@+id/ivItemSelected"
+        android:layout_toEndOf="@+id/cvItemSelected"
         android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvItemWeightSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 kg"
+        android:layout_toEndOf="@+id/tvNameItemSelected"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        />
 
     <TextView
         android:id="@+id/tvPriceItemSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$200.00"
-        android:layout_toEndOf="@+id/tvNameItemSelected"
+        android:layout_toEndOf="@+id/tvItemWeightSelected"
         android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:textSize="14sp"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnDeleteObject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_delete_or_close"

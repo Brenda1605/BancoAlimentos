@@ -1,32 +1,34 @@
 package mx.tec.bancoalimentos.fragments
 
+import android.annotation.SuppressLint
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.JsonRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.JsonArray
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import mx.tec.bancoalimentos.R
 import mx.tec.bancoalimentos.adapters.FoodAdapter
 import mx.tec.bancoalimentos.adapters.SelectedAdapter
-import org.json.JSONArray
-import org.json.JSONObject
 import java.util.ArrayList
+import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -39,10 +41,12 @@ class FragmentHome : Fragment(), View.OnClickListener {
     lateinit var rvFood: RecyclerView
     lateinit var foodManager: RecyclerView.LayoutManager
     lateinit var toolbar: Toolbar
-    private lateinit var jsonRequest: JsonObjectRequest
-    private lateinit var queue : RequestQueue
-    private lateinit var data : JSONArray
-    private lateinit var selected: MutableList<JSONObject>
+    private lateinit var data : List<DocumentSnapshot>
+    private lateinit var selected: List<DocumentSnapshot>
+    private lateinit var objectsSelected: ArrayList<String>
+    lateinit var selectedAdapter: SelectedAdapter
+    private var total: Long = 0
+    lateinit var tvTotalAmount: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,39 +80,57 @@ class FragmentHome : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbar = view.findViewById(R.id.tbHome)
-        toolbar.inflateMenu(R.menu.menu_search)
+        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
+
+        selected = mutableListOf()
+
+        Firebase.auth.currentUser?.let { currentUser ->
+            Firebase.firestore.collection("users").document(currentUser.uid)
+                .get().addOnSuccessListener { document ->
+                    objectsSelected = document.get("selected") as ArrayList<String>
+                }
+        }
 
         val donateBtn: Button? = view?.findViewById(R.id.home_donteBtn)
         donateBtn?.setOnClickListener(this)
 
-        queue = Volley.newRequestQueue(context)
-
-        val url = "https://firestore.googleapis.com/v1/projects/bancoalimentos-7964f/databases/(default)/documents/products/"
-
-        jsonRequest = JsonObjectRequest(Request.Method.GET, url, null,
-            Response.Listener { response ->
-                Log.i("Request", response.getJSONArray("documents").getJSONObject(0).getJSONObject("fields").getJSONObject("name").getString("stringValue").toString())
-                data = response.getJSONArray("documents")
-                selected = ArrayList()
+        Firebase.firestore.collection("products")
+            .get().addOnSuccessListener { document ->
+                selected = document.documents
+                data = document.documents
                 rvFood = view.findViewById(R.id.rvFood)
                 foodAdapter = FoodAdapter(data, onClickListener = this::addObject)
                 foodManager = GridLayoutManager(context,2)
                 rvFood.adapter = foodAdapter
                 rvFood.layoutManager = foodManager
                 foodAdapter.notifyDataSetChanged()
-            },
-            Response.ErrorListener { error ->
-                Log.i("Request", error.toString())
             }
-        )
-
-        jsonRequest.tag = "Ejemplo de request"
-        queue.add(jsonRequest)
     }
 
+    //@SuppressLint("ServiceCast")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_search, menu)
+        val searchManager = context?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu.findItem(R.id.searchFood)
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Search"
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    objectsSearch(query)
+                }
+                searchView.clearFocus()
+                searchView.onActionViewCollapsed()
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.i("search", "Escuchando cambio de query")
+                return true
+            }
+        })
+
     }
 
     override fun onClick(btn: View?) {
@@ -117,11 +139,12 @@ class FragmentHome : Fragment(), View.OnClickListener {
         dialogBuilder = AlertDialog.Builder(requireContext())
         var confirmationDonateView : View =
             LayoutInflater.from(context).inflate(R.layout.confirmation_donate, null)
-        var btnConfirm : Button = confirmationDonateView.findViewById(R.id.btnConfirm)
-        var btnCancel : Button = confirmationDonateView.findViewById(R.id.btnCancel)
+        val btnConfirm : Button = confirmationDonateView.findViewById(R.id.btnConfirm)
+        val btnCancel : Button = confirmationDonateView.findViewById(R.id.btnCancel)
+        tvTotalAmount = confirmationDonateView.findViewById(R.id.tvTotalAmount)
 
         var rvItemsSelected : RecyclerView = confirmationDonateView.findViewById(R.id.rvItemsSelected)
-        var selectedAdapter = SelectedAdapter(selected, onClickListener = this::addObject)
+        selectedAdapter = SelectedAdapter(objectsSelected, onClickListener = this::removeObject)
         var selectedManager = LinearLayoutManager(context)
         rvItemsSelected.adapter = selectedAdapter
         rvItemsSelected.layoutManager = selectedManager
@@ -137,7 +160,18 @@ class FragmentHome : Fragment(), View.OnClickListener {
             paymentOptions()
             dialog.dismiss()
         }
-
+        total = 0
+        var cont:Int = 0
+        for(priceObject in objectsSelected){
+            Firebase.firestore.collection("products").document(priceObject).get()
+            .addOnSuccessListener { doc ->
+                total = doc.getLong("price")?.let { total.plus(it) }!!
+                cont = cont.plus(1)
+                if(cont == objectsSelected.size){
+                    tvTotalAmount.text = "Total: $" + total
+                }
+            }
+        }
     }
     fun paymentOptions(){
         val transaction = fragmentManager?.beginTransaction()
@@ -146,8 +180,70 @@ class FragmentHome : Fragment(), View.OnClickListener {
     }
 
     fun addObject(view: View, position: Int){
-        selected.add(data.getJSONObject(position))
-        Toast.makeText(context, "Selected: " , Toast.LENGTH_SHORT).show()
-        Log.i("Selected", "Selected: " + selected)
+        var dialogBuilder: AlertDialog.Builder
+        var dialog: AlertDialog
+        dialogBuilder = AlertDialog.Builder(requireContext())
+        var confirmationDonateView : View =
+            LayoutInflater.from(context).inflate(R.layout.select_product, null)
+        var btnConfirm : Button = confirmationDonateView.findViewById(R.id.btnConfirmSelect)
+        var btnCancel : Button = confirmationDonateView.findViewById(R.id.btnCancelSelect)
+
+        dialogBuilder.setView(confirmationDonateView)
+        dialog = dialogBuilder.create()
+        dialog.show()
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        btnConfirm.setOnClickListener{
+            makeAddObject(view, position)
+            dialog.dismiss()
+        }
+    }
+
+    fun makeAddObject(view: View, position: Int){
+        Log.i("selected", "Objeto seleccionado: " + selected.get(position).id)
+        objectsSelected.add(objectsSelected.size, selected.get(position).id)
+
+        val userShoppingCart = hashMapOf("selected" to objectsSelected)
+        Firebase.auth.currentUser?.let { currentUser ->
+            Firebase.firestore.collection("users").document(currentUser.uid)
+                .set(userShoppingCart, SetOptions.merge())
+                .addOnSuccessListener { documentReference ->
+                    Toast.makeText(context, "Objeto añadido al carrito" , Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener { e ->
+                    Log.d("FIRESTORE","Hubo un error: $e")
+                }
+        }
+    }
+
+    fun removeObject(view: View, position: Int){
+        Firebase.firestore.collection("products").document(objectsSelected.get(position)).get().addOnSuccessListener { doc ->
+            total = doc.getLong("price")?.let { total.minus(it) }!!
+            tvTotalAmount.text = "Total: $" + total
+        }
+        objectsSelected.removeAt(position)
+        selectedAdapter.notifyDataSetChanged()
+        val userShoppingCart = hashMapOf("selected" to objectsSelected)
+        Firebase.auth.currentUser?.let { currentUser ->
+            Firebase.firestore.collection("users").document(currentUser.uid)
+                .set(userShoppingCart, SetOptions.merge())
+                .addOnSuccessListener { documentReference ->
+                    Log.i("shopping", "Objeto removido del carrito")
+                }.addOnFailureListener { e ->
+                    Log.d("FIRESTORE","Hubo un error: $e")
+                }
+        }
+    }
+
+    fun objectsSearch(search: String){
+        Firebase.firestore.collection("products").whereEqualTo("name", search)
+            .get().addOnSuccessListener { doc->
+            data = doc.documents
+            foodAdapter = FoodAdapter(data, onClickListener = this::addObject)
+            foodManager = GridLayoutManager(context,2)
+            rvFood.adapter = foodAdapter
+            rvFood.layoutManager = foodManager
+            foodAdapter.notifyDataSetChanged()
+        }
     }
 }
