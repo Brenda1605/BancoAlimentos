@@ -16,10 +16,6 @@ import androidx.core.graphics.drawable.toIcon
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -37,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser
 
 import androidx.annotation.NonNull
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.google.firebase.firestore.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -111,12 +108,11 @@ class FragmentProfile : Fragment(), View.OnClickListener {
             val user = hashMapOf(
                 "nombre" to nombre?.text.toString(),
                 "apellido" to apellido?.text.toString(),
-                "cumpleaños" to cumpleaños?.text.toString()
             )
 
             if (currUser != null) {
                 Firebase.firestore.collection("users").document(currUser.uid)
-                    .set(user)
+                    .set(user, SetOptions.merge())
                     .addOnSuccessListener { documentReference ->
                         Toast.makeText(getActivity(), "Nombre actualizado", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener { e ->
