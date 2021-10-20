@@ -15,6 +15,8 @@ import com.paypal.android.sdk.payments.PaymentActivity
 import com.paypal.android.sdk.payments.PayPalService
 
 import android.content.Intent
+import android.util.Log
+import android.widget.TextView
 
 import com.paypal.android.sdk.payments.PayPalPayment
 import java.math.BigDecimal
@@ -36,6 +38,10 @@ class FragmentPaymentMethod : Fragment(), View.OnClickListener {
     private var param2: String? = null
     val clientKey = "AcoinYhOkK7K627PBgqqbVTjP3KzyLbYhjOztRICLXwhY5tMgeAjT0zTYNNDtTX5BMLMd86v-HYsM_0a"
     val PAYPAL_REQUEST_CODE = 123
+    var precio : Long? = 0
+    var total : Int? = 0
+    lateinit var totalProductos : TextView
+    lateinit var totalPrecio : TextView
 
     // Paypal Configuration Object
     private val config = PayPalConfiguration() // Start with mock environment.  When ready,
@@ -61,6 +67,15 @@ class FragmentPaymentMethod : Fragment(), View.OnClickListener {
         val cancelBtn: Button = view?.findViewById(R.id.payment_cancelBtn)
         cancelBtn?.setOnClickListener(this)
 
+        precio = arguments?.getLong("Precio")
+        total = arguments?.getInt("Total")
+
+        totalProductos = view.findViewById(R.id.payment_total)
+        totalPrecio = view.findViewById(R.id.payment_price)
+
+        totalProductos.text = total.toString() + "  Productos"
+        totalPrecio.text = "$ " + precio.toString() + "    MXN"
+
         return view
     }
 
@@ -78,11 +93,11 @@ class FragmentPaymentMethod : Fragment(), View.OnClickListener {
     private fun getPayment() {
 
         // Getting the amount from editText
-        val amount = 10
+        val amount = precio
 
         // Creating a paypal payment on below line.
         val payment = PayPalPayment(
-            BigDecimal(amount), "USD", "Course Fees",
+            amount?.let { BigDecimal(it) }, "MXN", "Total",
             PayPalPayment.PAYMENT_INTENT_SALE
         )
 

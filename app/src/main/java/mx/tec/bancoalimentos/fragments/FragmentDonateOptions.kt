@@ -1,6 +1,7 @@
 package mx.tec.bancoalimentos.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,9 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var fragment : Fragment
+    var precio : Long? = 0
+    var total : Int? = 0
+    lateinit var communicator: Communicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +50,9 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
         cardOp1?.setOnClickListener(this)
         cardOp2?.setOnClickListener(this)
         backBtn?.setOnClickListener(this)
-        //Log.d("TEST", cardOp1.id.toString())
 
-        /*val backBtn: Button? = view?.findViewById(R.id.donate_backBtn)
-        backBtn?.setOnClickListener(this)*/
+        precio = arguments?.getLong("Precio")
+        total = arguments?.getInt("Total")
 
         return view
     }
@@ -77,10 +80,20 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
     override fun onClick(card: View) {
 
         when (card.id){
-            R.id.donate_op1Card -> fragment = FragmentMap()
-            R.id.donate_op2Card -> fragment = FragmentPaymentMethod()
-            R.id.forgotpass_sendBtn -> fragment = FragmentHome()
+            R.id.donate_op1Card -> transaction(FragmentMap())
+            R.id.donate_op2Card -> {
+                communicator = activity as Communicator
+                precio?.let {
+                    total?.let { it1 -> communicator.passData2(it, it1) }
+                }
+            }
+            R.id.forgotpass_sendBtn -> transaction(FragmentHome())
         }
+
+
+    }
+
+    fun transaction(fragment : Fragment){
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.flContainer,fragment)
         transaction?.commit()

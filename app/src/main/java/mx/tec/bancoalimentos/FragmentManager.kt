@@ -9,7 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import mx.tec.bancoalimentos.fragments.*
 
 
-class FragmentManager : AppCompatActivity() {
+class FragmentManager : AppCompatActivity(), Communicator {
     lateinit private var bottom_navigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +62,30 @@ class FragmentManager : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.flContainer, FragmentHome())
         transaction.commit()*/
+    }
+
+    override fun passData(Long: Long, Int : Int) {
+        val bundle = Bundle()
+        bundle.putLong("Precio", Long)
+        bundle.putInt("Total", Int)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragment = FragmentDonateOptions()
+        fragment.arguments = bundle
+        transaction?.replace(R.id.flContainer, fragment)
+        transaction?.commit()
+    }
+
+    override fun passData2(Long: Long, Int: Int) {
+        val bundle = Bundle()
+        bundle.putLong("Precio", Long)
+        bundle.putInt("Total", Int)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragment = FragmentPaymentMethod()
+        fragment.arguments = bundle
+        transaction?.replace(R.id.flContainer, fragment)
+        transaction?.commit()
     }
 }
 

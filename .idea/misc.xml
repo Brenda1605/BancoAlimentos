@@ -6,7 +6,10 @@
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/activity_create_account.xml" value="0.4" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/activity_forgot_pasword.xml" value="0.358974358974359" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/confirmation_donate.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_donate_options.xml" value="0.6" />
+        <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_home.xml" value="0.2513586956521739" />
+        <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_payment_method.xml" value="0.4" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_reporte_album.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_reportes.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/fragment_shop.xml" value="0.2513586956521739" />
@@ -14,17 +17,6 @@
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/news_layout_row.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/recycler_row.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Brenda/Desktop/BOX SYNC (A01632227@itesm.mx)/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/report_layout_row.xml" value="0.4" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/drawable/custom_input.xml" value="0.17395833333333333" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/drawable/layout_bg.xml" value="0.10572916666666667" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/activity_fragment_manager.xml" value="0.1" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/confirmation_donate.xml" value="0.10677083333333333" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/fragment_home.xml" value="0.10960144927536232" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/fragment_product.xml" value="0.67" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/item_food.xml" value="0.33" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/item_selected.xml" value="0.10677083333333333" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/layout/select_product.xml" value="0.1" />
-        <entry key="..\:/Users/Carlos/AndroidStudioProjects/BancoAlimentos/app/src/main/res/menu/menu_search.xml" value="0.1" />
         <entry key="..\:/Users/bpct2/Documents/ProyectosAndroid/BancoAlimentos/app/src/main/res/drawable/orangebackground.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/bpct2/Documents/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/activity_create_account.xml" value="0.22" />
         <entry key="..\:/Users/bpct2/Documents/ProyectosAndroid/BancoAlimentos/app/src/main/res/layout/activity_fragment_manager.xml" value="0.1796875" />

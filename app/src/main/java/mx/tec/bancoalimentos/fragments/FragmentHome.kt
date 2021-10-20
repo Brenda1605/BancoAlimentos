@@ -47,6 +47,7 @@ class FragmentHome : Fragment(), View.OnClickListener {
     lateinit var selectedAdapter: SelectedAdapter
     private var total: Long = 0
     lateinit var tvTotalAmount: TextView
+    lateinit var communicator: Communicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -174,9 +175,8 @@ class FragmentHome : Fragment(), View.OnClickListener {
         }
     }
     fun paymentOptions(){
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.flContainer, FragmentDonateOptions())
-        transaction?.commit()
+        communicator = activity as Communicator
+        communicator.passData(total, objectsSelected.size)
     }
 
     fun addObject(view: View, position: Int){
@@ -246,4 +246,5 @@ class FragmentHome : Fragment(), View.OnClickListener {
             foodAdapter.notifyDataSetChanged()
         }
     }
+
 }
