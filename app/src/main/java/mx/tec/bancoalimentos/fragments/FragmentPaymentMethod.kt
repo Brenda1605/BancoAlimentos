@@ -123,7 +123,7 @@ class FragmentPaymentMethod : Fragment(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.flContainer,FragmentShop())
+        transaction?.replace(R.id.flContainer,FragmentHome())
         transaction?.commit()
     }
 }

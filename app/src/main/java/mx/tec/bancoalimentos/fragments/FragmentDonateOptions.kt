@@ -79,7 +79,7 @@ class FragmentDonateOptions : Fragment(), View.OnClickListener {
         when (card.id){
             R.id.donate_op1Card -> fragment = FragmentMap()
             R.id.donate_op2Card -> fragment = FragmentPaymentMethod()
-            R.id.forgotpass_sendBtn -> fragment = FragmentShop()
+            R.id.forgotpass_sendBtn -> fragment = FragmentHome()
         }
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.flContainer,fragment)

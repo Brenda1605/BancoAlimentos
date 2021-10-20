@@ -35,61 +35,40 @@
 
     <EditText
         android:id="@+id/main_mail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
-        android:layout_marginRight="40dp"
-        android:background="#EEEDED"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/custom_input"
         android:ems="10"
+        android:hint="Correo"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toTopOf="@id/main_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_emailAddressLabel"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_logo"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/main_emailAddressLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="64dp"
-        android:text="Correo:"
-        android:textColor="#020202"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@id/main_mail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_logo" />
 
     <EditText
         android:id="@+id/main_password"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="#EEEDED"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/custom_input"
+        android:hint="Contraseña"
         android:ems="10"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toTopOf="@id/main_logInBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_passwordLabel"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_mail"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/main_passwordLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-7dp"
-        android:layout_marginTop="40dp"
-        android:text="Contraseña:"
-        android:textColor="#020202"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@id/main_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_emailAddressLabel" />
 
     <Button
         android:id="@+id/main_logInBtn"

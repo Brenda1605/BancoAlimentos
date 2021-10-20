@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Confirmacion"
+        android:text="Confirmación"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
