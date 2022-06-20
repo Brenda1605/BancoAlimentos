@@ -1,4 +1,4 @@
-# BancoAlimentos
+# BancoAlimentos 
 Desarrollo de aplicación móvil para Android para el Banco de Alimentos de Guadalajara. 
 Dentro de esta app se pueden llevar a cabo funciones como:
 - Consultar los alimentos más urgentes para ser donados.
