@@ -1,18 +1,21 @@
-# BancoAlimentos 🍎 
-Desarrollo de aplicación móvil para Android para el Banco de Alimentos de Guadalajara. 
-Dentro de esta app se pueden llevar a cabo funciones como:
-- Consultar los alimentos más urgentes para ser donados.
-- Donar en especie & consultar los puntos de donación más cercanos.
-- Donar monetariamente.
-- Consultar actualizaciones de donaciones hechas por el Banco y publicaciones varias.
+# Food Bank 🍎 
 
-## Tecnologías y Conocimientos ⌨
+This repository contains documents related to the development of a mobile application for Android for the Food Bank of Guadalajara.
+<br>
+
+In this app, you can carry out functions such as:
+- Consult the most urgent products to be donated.
+- Make in-kind donations & retrieve information related to the nearest donation points.
+- Donate monetarily.
+- Consult updates of donations made by the Bank and various internal publications (events, gratitudes, goals, etc.).
+
+## Technologies and knowledge ⌨
 - Kotlin
 - Android Studio
 - Firebase
 - Figma
 
-## Autores
+## Authors
 - Brenda Castillo
 - Natalia Velasco
 - Abigail Velasco
